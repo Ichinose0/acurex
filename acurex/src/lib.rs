@@ -1,4 +1,12 @@
+#[cfg(target_os = "windows")]
+pub mod win32;
+
 use ash::Entry;
+
+#[repr(C)]
+pub enum AXResult {
+
+}
 
 #[repr(transparent)]
 pub struct _Acurex {
@@ -32,4 +40,9 @@ pub extern "C" fn CreateRenderFactory() -> *mut _RenderFactory {
     };
 
     Box::into_raw(Box::new(factory))
+}
+
+#[no_mangle]
+pub extern "C" fn FillRectangle(acurex: *mut Acurex) {
+
 }
